@@ -21,3 +21,5 @@ int main(){
     cout << cnt;
     return 0;
 }
+
+// r이 3개 이하일 때는 for문 사용해서 구현하기
