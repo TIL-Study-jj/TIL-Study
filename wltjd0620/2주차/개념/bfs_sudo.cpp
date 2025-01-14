@@ -6,26 +6,28 @@ int visited[100];
 int nodeList[] = {10,12,14,16,18,20,22,24};
 
 void bfs(int here){
-    // queue 선언
-    queue<int> q;
-    // 일단 방문처리
+    queue <int> q;
     visited[here] = 1;
-    // queue에 push
+    // queue에 방문 노드 추가
     q.push(here);
-    // queue size만큼 반복
     while(q.size()){
-        // queue 맨 앞 here변수에 저장 후 해당 값 pop
         int here = q.front(); q.pop();
-        // adj 해당 연결리스트의 노드 탐색
-        for(int there : adj[here]){
-            // 방문노드면 패스
-            if(visited[there]) continue;
-            // 방문하지않은 노드의 경우 +1
-            visited[there] = visited[here] + 1;
-            q.push(there);
+        // here adj 에서 연결되어 있는 노드 하나씩 방문
+        for(int i : adj[here]){
+            // i -> adj 안에 있는 연결되어 있는 애들이니까
+            if(visited[i]){
+                continue;
+            }
+            // 이전 방문노드 ( here )보다 visited 값 하나 더 증가해서 넣어줌
+            // 레벨별로 visited 배열 값이 달라서 최단거리를 찾을 수 있게 된다.
+            visited[i] = visited[here] + 1;
+            // adj ( 인접리스트 ) 에 있는 값을 queue에 다시 추가
+            q.push(i);
         }
     }
 }
+
+
 
 int main(){
     adj[10].push_back(12);
