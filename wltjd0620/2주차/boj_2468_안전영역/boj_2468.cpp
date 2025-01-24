@@ -52,7 +52,7 @@ int main(){
     //int max_map_suwi = *max_element(a.begin(),a.end());
     
     // 수위별로 전부 반복
-    for(int z = 0; z <= 100; z++){
+    for(int z = 0; z <= 100; z++){ // 안 잠기는 경우도 있으니까 z가 0부터
         // ret 값을 temp에 일단 저장 ( 초기 ret 값 )
         ret = 0;
         fill(&chimsu[0][0], &chimsu[0][0]+104*104,0);
